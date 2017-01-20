@@ -21,38 +21,39 @@ public class BoidFlocking : MonoBehaviour
         {
             if (inited)
             {
-                GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + Calc() * Time.deltaTime;
+                GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + Calc() * Time.deltaTime;
 
                 // enforce minimum and maximum speeds for the boids
-                float speed = GetComponent<Rigidbody>().velocity.magnitude;
+                float speed = GetComponent<Rigidbody2D>().velocity.magnitude;
                 if (speed > maxVelocity)
                 {
-                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxVelocity;
+                    GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity.normalized * maxVelocity;
                 }
                 else if (speed < minVelocity)
                 {
-                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * minVelocity;
+                    GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity.normalized * minVelocity;
                 }
             }
 
-            float waitTime = Random.Range(0.3f, 0.5f);
+            float waitTime = Random.Range(0.02f, 0.04f);
             yield return new WaitForSeconds(waitTime);
         }
     }
 
-    private Vector3 Calc()
+    private Vector2 Calc()
     {
-        Vector3 randomize = new Vector3((Random.value * 2) - 1, (Random.value * 2) - 1, (Random.value * 2) - 1);
+        Vector2 localPosition2D = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        Vector2 randomize = new Vector3((Random.value * 2) - 1, (Random.value * 2) - 1, (Random.value * 2) - 1);
 
         randomize.Normalize();
         BoidController boidController = Controller.GetComponent<BoidController>();
-        Vector3 flockCenter = boidController.flockCenter;
-        Vector3 flockVelocity = boidController.flockVelocity;
-        Vector3 follow = chasee.transform.localPosition;
+        Vector2 flockCenter = boidController.flockCenter;
+        Vector2 flockVelocity = boidController.flockVelocity;
+        Vector2 follow = chasee.transform.localPosition;
 
-        flockCenter = flockCenter - transform.localPosition;
-        flockVelocity = flockVelocity - GetComponent<Rigidbody>().velocity;
-        follow = follow - transform.localPosition;
+        flockCenter = flockCenter - localPosition2D;
+        flockVelocity = flockVelocity - GetComponent<Rigidbody2D>().velocity;
+        follow = follow - localPosition2D;
 
         return (flockCenter + flockVelocity + follow * 2 + randomize * randomness);
     }

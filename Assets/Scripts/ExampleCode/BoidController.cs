@@ -14,7 +14,7 @@ public class BoidController : MonoBehaviour
     public Vector3 flockVelocity;
 
     private GameObject[] boids;
-    private Collider2D collider;
+    new private Collider2D collider;
 
     void Start()
     {
@@ -40,12 +40,12 @@ public class BoidController : MonoBehaviour
     void Update()
     {
         Vector3 theCenter = Vector3.zero;
-        Vector3 theVelocity = Vector3.zero;
+        Vector2 theVelocity = Vector2.zero;
 
         foreach (GameObject boid in boids)
         {
             theCenter = theCenter + boid.transform.localPosition;
-            theVelocity = theVelocity + boid.GetComponent<Rigidbody>().velocity;
+            theVelocity = theVelocity + boid.GetComponent<Rigidbody2D>().velocity;
         }
 
         flockCenter = theCenter / (flockSize);
