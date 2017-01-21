@@ -13,6 +13,8 @@ public class BoidController3D : MonoBehaviour
     public Vector3 flockCenter;
     public Vector3 flockVelocity;
 
+    public float spawnArea = 5f;
+
     private GameObject[] boids;
     new private Collider collider;
 
@@ -22,15 +24,11 @@ public class BoidController3D : MonoBehaviour
         boids = new GameObject[flockSize];
         for (var i = 0; i < flockSize; i++)
         {
-            Vector3 position = new Vector3(
-                Random.value * collider.bounds.size.x,
-                Random.value * collider.bounds.size.y,
-                Random.value * collider.bounds.size.z
-            ) - collider.bounds.extents;
-
-            GameObject boid = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
+            Vector3 random = new Vector3(Random.Range(-spawnArea, spawnArea), 0f, Random.Range(-spawnArea, spawnArea));
+            Debug.Log(random);
+            GameObject boid = Instantiate(prefab, random, transform.rotation) as GameObject;
             //boid.transform.parent = transform;
-            boid.transform.position = transform.position;
+            boid.transform.position = transform.position + random;
             boid.GetComponent<BoidFlocking3D>().SetController(gameObject);
             boids[i] = boid;
 
