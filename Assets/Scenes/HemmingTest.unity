@@ -362,34 +362,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af9dac8910fea184a89cbd3115e24cf7, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1163619818 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4700933582187720, guid: 95963b7accd79754fac435180a663ad5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1723753906}
---- !u!1 &1676199470
+--- !u!1 &1335320695
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1676199471}
-  - component: {fileID: 1676199473}
-  - component: {fileID: 1676199472}
+  - component: {fileID: 1335320696}
+  - component: {fileID: 1335320697}
   m_Layer: 0
-  m_Name: Hyssh Haaa
+  m_Name: Scare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1676199471
+--- !u!4 &1335320696
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1676199470}
+  m_GameObject: {fileID: 1335320695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -397,30 +391,17 @@ Transform:
   m_Father: {fileID: 1943439256}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1676199472
+--- !u!114 &1335320697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1676199470}
+  m_GameObject: {fileID: 1335320695}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b0dcc3fc20c79d4b9598aeea5ae8af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scareArea: {fileID: 1676199473}
---- !u!135 &1676199473
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1676199470}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1723753906
 Prefab:
   m_ObjectHideFlags: 0
@@ -463,64 +444,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95963b7accd79754fac435180a663ad5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1883613299
+--- !u!1 &1943439253 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1883613300}
-  - component: {fileID: 1883613301}
-  - component: {fileID: 1883613302}
-  m_Layer: 0
-  m_Name: Follow close by sheep
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1883613300
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883613299}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1163619818}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1883613301
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883613299}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: -1}
---- !u!114 &1883613302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883613299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf0b539c3b8fe74ca8a1af424921053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_PrefabParentObject: {fileID: 1523720794439190, guid: aa511abef1601dd4db0483a411b33b07,
+    type: 2}
+  m_PrefabInternal: {fileID: 419126917}
 --- !u!4 &1943439256 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4649408606289056, guid: aa511abef1601dd4db0483a411b33b07,
     type: 2}
   m_PrefabInternal: {fileID: 419126917}
+--- !u!114 &1943439257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943439253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0dcc3fc20c79d4b9598aeea5ae8af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088603699
 GameObject:
   m_ObjectHideFlags: 0
