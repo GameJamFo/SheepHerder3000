@@ -70,6 +70,7 @@ public class BoidFlocking3D : MonoBehaviour
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime;
                 }
 
+
                 // enforce minimum and maximum speeds for the boids
                 float speed = GetComponent<Rigidbody>().velocity.magnitude;
                 if (speed > maxVelocity)
