@@ -24,7 +24,7 @@ public class Move : MonoBehaviour {
     IEnumerator jump()
     {
         jumping = true;
-        gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 15, ForceMode.Impulse);
+        gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
         yield return new WaitForSeconds(.5f);
         jumping = false;
     }
