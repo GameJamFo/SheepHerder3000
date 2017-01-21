@@ -19,7 +19,7 @@ public class ToScareSheep : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.transform.parent == null && other.gameObject.transform.tag == "sheep")
+        if(/*other.gameObject.transform.parent == null &&*/ other.gameObject.transform.tag == "sheep")
         {
             other.gameObject.GetComponent<BoidFlocking3D>().scareSheep(transform.position);
         }
