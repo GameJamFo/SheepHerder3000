@@ -12,6 +12,7 @@ public class StartOffests
 public class CameraFollow : MonoBehaviour
 {
     public StartOffests offsets;
+    public bool rotationEnabled = true;
     private float distance;
     public float yRotationSpeed = 300;
     public float yRotationSmoothness = 5;
@@ -23,6 +24,7 @@ public class CameraFollow : MonoBehaviour
     public float maxZoom = 100;
     public float startZoomProsent = 100;
     public float minZoom = 20;
+    public bool zoomEnabled = true;
 
     private float currentHeight;
     private float currentWidth;
@@ -60,7 +62,7 @@ public class CameraFollow : MonoBehaviour
 
         
         // if middle mouse down.. rotate around and watch at point
-        if (Input.GetMouseButton(2)==true)
+        if (Input.GetMouseButton(2)==true && rotationEnabled)
         {
             //transform.position = needPos;
 
@@ -81,7 +83,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         // Zooming in and out by scrooling mouse wheel
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && zoomEnabled)
         {
             float zoom = Input.GetAxis("Mouse ScrollWheel") * 10 * zoomAmount; // 10%
 
