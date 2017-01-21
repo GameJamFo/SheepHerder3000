@@ -9,6 +9,8 @@ public class BoidFlocking3D : MonoBehaviour
     private float maxVelocity;
     private float randomness;
     private GameObject chasee;
+    public float nearbyCenterMultiple = 1f;
+    public float nearbyVelocityMultiple = 1f;
 
     // Kristian's enum-----------
     private enum mood {
@@ -114,9 +116,8 @@ public class BoidFlocking3D : MonoBehaviour
         Vector3 flockVelocity = boidController.flockVelocity;
         Vector3 follow = chasee.transform.localPosition;
 
-        flockCenter = flockCenter - transform.localPosition;
-        flockCenter = Vector3.zero;
-        flockVelocity = flockVelocity - GetComponent<Rigidbody>().velocity;
+        flockCenter = -gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyCenter() * nearbyCenterMultiple;
+        flockVelocity = gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyVelocity() * nearbyVelocityMultiple;
         follow = follow - transform.localPosition;
         follow = Vector3.zero;
 
