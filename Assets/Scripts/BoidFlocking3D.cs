@@ -21,6 +21,7 @@ public class BoidFlocking3D : MonoBehaviour
     private float timeLastScare = 0f;
     private float sheepScared = 3f;
     private Vector3 fleeDirection;
+    private Vector3 evadeDirection;
     private bool jumping = false;
 
     void Start()
@@ -47,6 +48,15 @@ public class BoidFlocking3D : MonoBehaviour
         //{
         //    gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); 
         //}
+
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 2, Vector3.forward, out hit, 2,LayerMask.NameToLayer("Fences")))
+        {
+            evadeDirection = hit.point - transform.position;
+            evadeDirection.Set(evadeDirection.x, 0, evadeDirection.z);
+            evadeDirection.Normalize();
+        }
+        else evadeDirection = Vector3.zero;
 
         if(!jumping)
         {
@@ -109,7 +119,7 @@ public class BoidFlocking3D : MonoBehaviour
         follow = follow - transform.localPosition;
         follow = Vector3.zero;
 
-        return (flockCenter + flockVelocity + follow * 2 + randomize * randomness);
+        return (flockCenter + flockVelocity + follow * 2 + randomize * randomness + evadeDirection);
     }
 
     private Vector3 RunAwayCalc()
@@ -131,12 +141,17 @@ public class BoidFlocking3D : MonoBehaviour
 
     public void scareSheep(Vector3 positionScareFrom, float time=3f)
     {
+        fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
+        fleeDirection.Normalize();
+
+        if (currentMood == mood.CALM)
+            GetComponent<Rigidbody>().AddForce(fleeDirection*7f + Vector3.up*5f, ForceMode.Impulse);
         currentMood = mood.SCARED;
         sheepScared = time;
         timeLastScare = 0f;
 
-        fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
-        fleeDirection.Normalize();
+        
+        
     }
 
     private void OnTriggerEnter(Collider other)
