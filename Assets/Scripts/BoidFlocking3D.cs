@@ -20,6 +20,7 @@ public class BoidFlocking3D : MonoBehaviour
 
     private float timeLastScare = 0f;
     private float sheepScared = 3f;
+    private Vector3 fleeDirection;
     private bool jumping = false;
 
     void Start()
@@ -61,9 +62,13 @@ public class BoidFlocking3D : MonoBehaviour
             if (inited)
             {
                 if(currentMood == mood.CALM)
+                { 
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + FlockCalc() * Time.deltaTime;
+                } else
                 if (currentMood == mood.SCARED)
-                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime; ;
+                { 
+                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime;
+                }
 
                 // enforce minimum and maximum speeds for the boids
                 float speed = GetComponent<Rigidbody>().velocity.magnitude;
@@ -108,7 +113,8 @@ public class BoidFlocking3D : MonoBehaviour
 
     private Vector3 RunAwayCalc()
     {
-        return Vector3.zero;
+        print("Run Away!!");
+        return fleeDirection + Vector3.up;
     }
 
     public void SetController(GameObject theController)
@@ -128,7 +134,7 @@ public class BoidFlocking3D : MonoBehaviour
         sheepScared = time;
         timeLastScare = 0f;
 
-        Vector3 fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
+        fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
         fleeDirection.Normalize();
     }
 
