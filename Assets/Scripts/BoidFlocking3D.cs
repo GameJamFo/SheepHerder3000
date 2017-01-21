@@ -50,7 +50,7 @@ public class BoidFlocking3D : MonoBehaviour
         //}
 
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 2, Vector3.forward, out hit, 2,LayerMask.NameToLayer("Fences")))
+        if (Physics.SphereCast(transform.position, 2, Vector3.forward, out hit, 10,LayerMask.NameToLayer("Fences")))
         {
             evadeDirection = hit.point - transform.position;
             evadeDirection.Set(evadeDirection.x, 0, evadeDirection.z);
