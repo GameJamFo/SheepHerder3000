@@ -55,6 +55,7 @@ public class BoidFlocking3D : MonoBehaviour
             evadeDirection = hit.point - transform.position;
             evadeDirection.Set(evadeDirection.x, 0, evadeDirection.z);
             evadeDirection.Normalize();
+            print("Aaaah, here's a fence!! at: " + hit.point);
         }
         else evadeDirection = Vector3.zero;
 
