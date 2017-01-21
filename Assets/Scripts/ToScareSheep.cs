@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ToScareSheep : MonoBehaviour {
 
-    public Collider scareArea;
+    private SphereCollider scareArea;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        scareArea = gameObject.AddComponent<SphereCollider>();
+        scareArea.radius = 5f;
+        scareArea.isTrigger = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {	

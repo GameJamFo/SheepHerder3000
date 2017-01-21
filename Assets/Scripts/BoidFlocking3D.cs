@@ -58,9 +58,12 @@ public class BoidFlocking3D : MonoBehaviour
         while (true)
         {
             float waitTime = Random.Range(0.3f, 0.5f);
-            if (inited && currentMood == mood.CALM)
+            if (inited)
             {
-                GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + Calc() * Time.deltaTime;
+                if(currentMood == mood.CALM)
+                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + FlockCalc() * Time.deltaTime;
+                if (currentMood == mood.SCARED)
+                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime;
 
                 // enforce minimum and maximum speeds for the boids
                 float speed = GetComponent<Rigidbody>().velocity.magnitude;
@@ -73,10 +76,6 @@ public class BoidFlocking3D : MonoBehaviour
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * minVelocity;
                 }
             }
-            else if(inited && currentMood == mood.SCARED)
-            {
-
-            }
 
             yield return new WaitForSeconds(waitTime);
         }
@@ -88,7 +87,7 @@ public class BoidFlocking3D : MonoBehaviour
         Debug.Log("Waited " + waitTime + " seconds!");
     }
 
-    private Vector3 Calc()
+    private Vector3 FlockCalc()
     {
         Vector3 randomize = new Vector3((Random.value * 2) - 1, 0f, (Random.value * 2) - 1);
 
@@ -105,6 +104,11 @@ public class BoidFlocking3D : MonoBehaviour
         follow = Vector3.zero;
 
         return (flockCenter + flockVelocity + follow * 2 + randomize * randomness);
+    }
+
+    private Vector3 RunAwayCalc()
+    {
+        return Vector3.zero;
     }
 
     public void SetController(GameObject theController)
