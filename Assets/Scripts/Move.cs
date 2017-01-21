@@ -5,11 +5,12 @@ using UnityEngine;
 public class Move : MonoBehaviour {
 
     private bool jumping = false;
+
 	void Update ()
     {
         Vector3 moveDir = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-        gameObject.GetComponent<Rigidbody>().velocity = moveDir * 3 + new Vector3(0f, GetComponent<Rigidbody>().velocity.y, 0f);
+        gameObject.GetComponent<Rigidbody>().velocity = moveDir * 6 + new Vector3(0f, GetComponent<Rigidbody>().velocity.y, 0f);
         if (moveDir.magnitude > .05f)
         {
             gameObject.transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);

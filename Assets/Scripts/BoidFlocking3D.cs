@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BoidFlocking3D : MonoBehaviour
 {
+    public float nearbyCenterMultiple = 1f;
+    public float nearbyVelocityMultiple = 1f;
     private GameObject Controller;
     private bool inited = false;
     private float minVelocity;
@@ -64,8 +66,8 @@ public class BoidFlocking3D : MonoBehaviour
                 if(currentMood == mood.CALM)
                 { 
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + FlockCalc() * Time.deltaTime;
-                } else
-                if (currentMood == mood.SCARED)
+                }
+                else if (currentMood == mood.SCARED)
                 { 
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime;
                 }
@@ -99,17 +101,14 @@ public class BoidFlocking3D : MonoBehaviour
 
         randomize.Normalize();
         BoidController3D boidController = Controller.GetComponent<BoidController3D>();
-        Vector3 flockCenter = new Vector3(boidController.flockCenter.x, transform.localPosition.y, boidController.flockCenter.z);
-        Vector3 flockVelocity = boidController.flockVelocity;
+        //Vector3 flockCenter = new Vector3(boidController.flockCenter.x, transform.localPosition.y, boidController.flockCenter.z);
+        Vector3 flockCenter = -gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyCenter() * nearbyCenterMultiple;
+
+        Vector3 flockVelocity = gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyVelocity() * nearbyVelocityMultiple;
         Vector3 follow = chasee.transform.localPosition;
 
-        flockCenter = flockCenter - transform.localPosition;
-        flockCenter = Vector3.zero;
-        flockVelocity = flockVelocity - GetComponent<Rigidbody>().velocity;
-        follow = follow - transform.localPosition;
-        follow = Vector3.zero;
 
-        return (flockCenter + flockVelocity + follow * 2 + randomize * randomness);
+        return (flockCenter + flockVelocity + randomize * randomness);
     }
 
     private Vector3 RunAwayCalc()

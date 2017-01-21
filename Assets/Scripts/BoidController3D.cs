@@ -6,6 +6,8 @@ public class BoidController3D : MonoBehaviour
     public float minVelocity = 5;
     public float maxVelocity = 20;
     public float randomness = 1;
+    public float nearbyCenterMultiple = 1f;
+    public float nearbyVelocityMultiple = 1f;
     public int flockSize = 20;
     public GameObject prefab;
     public GameObject chasee;
@@ -27,9 +29,10 @@ public class BoidController3D : MonoBehaviour
             Vector3 random = new Vector3(Random.Range(-spawnArea, spawnArea), 0f, Random.Range(-spawnArea, spawnArea));
             Debug.Log(random);
             GameObject boid = Instantiate(prefab, random, transform.rotation) as GameObject;
-            //boid.transform.parent = transform;
             boid.transform.position = transform.position + random;
             boid.GetComponent<BoidFlocking3D>().SetController(gameObject);
+            boid.GetComponent<BoidFlocking3D>().nearbyCenterMultiple = nearbyCenterMultiple;
+            boid.GetComponent<BoidFlocking3D>().nearbyVelocityMultiple = nearbyVelocityMultiple;
             boids[i] = boid;
 
             GameObject boidFollower = new GameObject("follower");
