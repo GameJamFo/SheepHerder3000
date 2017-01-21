@@ -33,6 +33,14 @@ public class BoidController3D : MonoBehaviour
             boid.transform.localPosition = position;
             boid.GetComponent<BoidFlocking3D>().SetController(gameObject);
             boids[i] = boid;
+
+            GameObject boidFollower = new GameObject("follower");
+
+            boidFollower.transform.parent = boid.transform;
+            boidFollower.transform.localPosition = Vector3.zero;
+            SphereCollider coll = boidFollower.AddComponent<SphereCollider>();
+            coll.radius = 5f;
+            coll.isTrigger = true;
         }
     }
 
