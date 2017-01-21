@@ -10,16 +10,37 @@ public class BoidFlocking3D : MonoBehaviour
     private float randomness;
     private GameObject chasee;
 
+    // Kristian's enum-----------
+    private enum mood {
+        SCARED,
+        CALM
+    };
+    private mood currentMood = mood.CALM;
+    // --------------------------
+
+    private float timeLastScare = 0f;
+    private float sheepScared = 3f;
+
     void Start()
     {
         StartCoroutine("BoidSteering");
+    }
+
+    void Update()
+    {
+        timeLastScare += Time.deltaTime;
+        if (currentMood == mood.SCARED)
+        {
+            if (timeLastScare > sheepScared)
+                currentMood = mood.CALM;
+        }
     }
 
     IEnumerator BoidSteering()
     {
         while (true)
         {
-            if (inited)
+            if (inited && currentMood == mood.CALM)
             {
                 GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + Calc() * Time.deltaTime;
 
@@ -33,6 +54,9 @@ public class BoidFlocking3D : MonoBehaviour
                 {
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * minVelocity;
                 }
+            }else if(inited && currentMood == mood.SCARED)
+            {
+
             }
 
             float waitTime = Random.Range(0.3f, 0.5f);
@@ -66,5 +90,15 @@ public class BoidFlocking3D : MonoBehaviour
         randomness = boidController.randomness;
         chasee = boidController.chasee;
         inited = true;
+    }
+
+    public void scareSheep(Vector3 positionScareFrom, float time=3f)
+    {
+        currentMood = mood.SCARED;
+        sheepScared = time;
+        timeLastScare = 0f;
+
+        Vector3 fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
+        fleeDirection.Normalize();
     }
 }
