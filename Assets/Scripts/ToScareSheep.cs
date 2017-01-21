@@ -17,7 +17,7 @@ public class ToScareSheep : MonoBehaviour {
 	void Update () {	
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if(/*other.gameObject.transform.parent == null &&*/ other.gameObject.transform.tag == "sheep")
         {
