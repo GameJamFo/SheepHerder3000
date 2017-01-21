@@ -60,6 +60,7 @@ public class BoidFlocking3D : MonoBehaviour
             float waitTime = Random.Range(0.3f, 0.5f);
             if (inited && currentMood == mood.CALM)
             {
+                Debug.Log(Calc());
                 GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + Calc() * Time.deltaTime;
 
                 // enforce minimum and maximum speeds for the boids
@@ -99,8 +100,10 @@ public class BoidFlocking3D : MonoBehaviour
         Vector3 follow = chasee.transform.localPosition;
 
         flockCenter = flockCenter - transform.localPosition;
+        flockCenter = Vector3.zero;
         flockVelocity = flockVelocity - GetComponent<Rigidbody>().velocity;
         follow = follow - transform.localPosition;
+        follow = Vector3.zero;
 
         return (flockCenter + flockVelocity + follow * 2 + randomize * randomness);
     }
