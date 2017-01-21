@@ -29,8 +29,8 @@ public class BoidController3D : MonoBehaviour
             ) - collider.bounds.extents;
 
             GameObject boid = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
-            boid.transform.parent = transform;
-            boid.transform.localPosition = position;
+            //boid.transform.parent = transform;
+            boid.transform.position = transform.position;
             boid.GetComponent<BoidFlocking3D>().SetController(gameObject);
             boids[i] = boid;
 
@@ -38,6 +38,7 @@ public class BoidController3D : MonoBehaviour
 
             boidFollower.transform.parent = boid.transform;
             boidFollower.transform.localPosition = Vector3.zero;
+            boidFollower.AddComponent<SheepBoidCloseby>();
             SphereCollider coll = boidFollower.AddComponent<SphereCollider>();
             coll.radius = 5f;
             coll.isTrigger = true;
