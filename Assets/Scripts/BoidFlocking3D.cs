@@ -20,6 +20,7 @@ public class BoidFlocking3D : MonoBehaviour
 
     private float timeLastScare = 0f;
     private float sheepScared = 3f;
+    private bool jumping = false;
 
     void Start()
     {
@@ -34,12 +35,29 @@ public class BoidFlocking3D : MonoBehaviour
             if (timeLastScare > sheepScared)
                 currentMood = mood.CALM;
         }
+
+        Vector3 startVector = GetComponent<Rigidbody>().velocity.normalized;
+        if (GetComponent<Rigidbody>().velocity.magnitude > .5f)
+        {
+            //gameObject.transform.rotation = Quaternion.LookRotation(Vector3.Lerp(-startVector, -new Vector3(GetComponent<Rigidbody>().velocity.normalized.x, 0f, GetComponent<Rigidbody>().velocity.normalized.z), .1f), Vector3.up); // Face movedirection
+            gameObject.transform.rotation = Quaternion.LookRotation(-new Vector3(GetComponent<Rigidbody>().velocity.normalized.x, 0f, GetComponent<Rigidbody>().velocity.normalized.z), Vector3.up); // Face movedirection
+        }
+        //else
+        //{
+        //    gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); 
+        //}
+
+        if(!jumping)
+        {
+            //StartCoroutine(jump(1f));
+        }
     }
 
     IEnumerator BoidSteering()
     {
         while (true)
         {
+            float waitTime = Random.Range(0.3f, 0.5f);
             if (inited && currentMood == mood.CALM)
             {
                 GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + Calc() * Time.deltaTime;
@@ -54,23 +72,29 @@ public class BoidFlocking3D : MonoBehaviour
                 {
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * minVelocity;
                 }
-            }else if(inited && currentMood == mood.SCARED)
+            }
+            else if(inited && currentMood == mood.SCARED)
             {
 
             }
 
-            float waitTime = Random.Range(0.3f, 0.5f);
             yield return new WaitForSeconds(waitTime);
         }
     }
 
+    IEnumerator jump(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("Waited " + waitTime + " seconds!");
+    }
+
     private Vector3 Calc()
     {
-        Vector3 randomize = new Vector3((Random.value * 2) - 1, (Random.value * 2) - 1, (Random.value * 2) - 1);
+        Vector3 randomize = new Vector3((Random.value * 2) - 1, 0f, (Random.value * 2) - 1);
 
         randomize.Normalize();
         BoidController3D boidController = Controller.GetComponent<BoidController3D>();
-        Vector3 flockCenter = boidController.flockCenter;
+        Vector3 flockCenter = new Vector3(boidController.flockCenter.x, transform.localPosition.y, boidController.flockCenter.z);
         Vector3 flockVelocity = boidController.flockVelocity;
         Vector3 follow = chasee.transform.localPosition;
 
@@ -100,5 +124,13 @@ public class BoidFlocking3D : MonoBehaviour
 
         Vector3 fleeDirection = new Vector3(-positionScareFrom.x + transform.position.x, 0, -positionScareFrom.z + transform.position.z);
         fleeDirection.Normalize();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "ground")
+        {
+            jumping = false;
+        }
     }
 }

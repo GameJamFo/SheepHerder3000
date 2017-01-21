@@ -43,7 +43,7 @@ public class BoidFlocking : MonoBehaviour
     private Vector2 Calc()
     {
         Vector2 localPosition2D = new Vector2(transform.localPosition.x, transform.localPosition.y);
-        Vector2 randomize = new Vector3((Random.value * 2) - 1, (Random.value * 2) - 1, (Random.value * 2) - 1);
+        Vector2 randomize = new Vector3((Random.value * 2) - 1, Random.value, (Random.value * 2) - 1);
 
         randomize.Normalize();
         BoidController boidController = Controller.GetComponent<BoidController>();
