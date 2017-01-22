@@ -11,24 +11,45 @@ public class State : MonoBehaviour {
 	
 	void Update ()
     {
-		
+		if(currentState != gameState.playing)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
 	}
-
-    public void winGame()
-    {
-        currentState = gameState.won;
-        Debug.Log("Game has been won!");
-    }
-
-    public void loseGame()
-    {
-        currentState = gameState.lost;
-        Debug.Log("Games has been lost!");
-    }
 
     public gameState getState()
     {
         return currentState;
+    }
+
+    public void switchState(gameState inputState)
+    {
+        currentState = inputState;
+        switch(currentState)
+        {
+            case gameState.lost:
+                Debug.Log("You lose!");
+                break;
+
+            case gameState.won:
+                Debug.Log("You've won!");
+                break;
+
+            case gameState.playing:
+                Debug.Log("Game started...");
+                break;
+
+            case gameState.paused:
+                Debug.Log("Game paused...");
+                break;
+
+            default:
+                break;
+        }
     }
 
     public enum gameState

@@ -23,7 +23,7 @@ public class CountDownClock : MonoBehaviour {
 	void Update () {
 		if(started == true)
         {
-            if (timeToComplete > 0)
+            if (timeToComplete > 0 && state.getState() == State.gameState.playing)
             {
                 timeToComplete -= Time.deltaTime;
                 drawText();
@@ -64,17 +64,19 @@ public class CountDownClock : MonoBehaviour {
     public void StartTimer()
     {
         started = true;
+        state.switchState(State.gameState.playing);
     }
 
     public void StopTimer()
     {
         started = false;
+        state.switchState(State.gameState.paused);
     }
 
     void timeOut()
     {
         // You lose!
         // Return to menu screen...
-        state.loseGame();
+        state.switchState(State.gameState.lost);
     }
 }
