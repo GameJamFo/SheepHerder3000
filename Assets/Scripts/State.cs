@@ -41,6 +41,7 @@ public class State : MonoBehaviour {
         {
             case gameState.lost:
                 Debug.Log("You lose!");
+                stats.getLoseScreen().SetActive(true);
                 break;
 
             case gameState.won:
