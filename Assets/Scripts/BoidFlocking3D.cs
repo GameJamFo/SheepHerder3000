@@ -88,7 +88,7 @@ public class BoidFlocking3D : MonoBehaviour
                 } else
                 if (currentMood == mood.SCARED)
                 { 
-                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc() * Time.deltaTime;
+                    GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc();
                 }
 
 
@@ -154,7 +154,7 @@ public class BoidFlocking3D : MonoBehaviour
         fleeDirection.Normalize();
 
         if (currentMood == mood.CALM)
-            GetComponent<Rigidbody>().AddForce(fleeDirection*7f + Vector3.up*5f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(fleeDirection*10f + Vector3.up*5f, ForceMode.Impulse);
         currentMood = mood.SCARED;
         sheepScared = time;
         timeLastScare = 0f;

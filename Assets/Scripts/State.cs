@@ -1,25 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class State : MonoBehaviour {
 
+    private Stats stats = null;
+
 	void Start ()
     {
-		
+        stats = gameObject.GetComponent<Stats>();
 	}
+
+    private bool loadingNewScene = false;
 	
 	void Update ()
     {
-		if(currentState != gameState.playing)
+        if((currentState == gameState.won || currentState == gameState.lost) && !loadingNewScene)
         {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
+            loadingNewScene = true;
+            StartCoroutine(endMap());
         }
 	}
+
+    private IEnumerator endMap()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(1);
+    }
 
     public gameState getState()
     {
@@ -37,10 +45,12 @@ public class State : MonoBehaviour {
 
             case gameState.won:
                 Debug.Log("You've won!");
+                stats.getWinScreen().SetActive(true);
                 break;
 
             case gameState.playing:
                 Debug.Log("Game started...");
+                stats.getWinScreen().SetActive(false);
                 break;
 
             case gameState.paused:
