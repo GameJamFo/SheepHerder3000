@@ -81,6 +81,7 @@ public class BoidFlocking3D : MonoBehaviour
                 if (currentMood == mood.SCARED)
                 { 
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + RunAwayCalc();
+                    waitTime = Random.Range(0.1f,0.3f);
                 }
 
 

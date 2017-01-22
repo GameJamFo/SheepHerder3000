@@ -2541,8 +2541,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826750782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 49.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 184.28, z: 0}
+  m_LocalScale: {x: 1, y: 10, z: 1}
   m_Children:
   - {fileID: 1580727170}
   - {fileID: 1455544481}
@@ -5727,7 +5727,7 @@ Prefab:
     - target: {fileID: 114141341436298544, guid: af9dac8910fea184a89cbd3115e24cf7,
         type: 2}
       propertyPath: flockSize
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af9dac8910fea184a89cbd3115e24cf7, type: 2}
@@ -5795,6 +5795,60 @@ Transform:
   m_PrefabParentObject: {fileID: 4858501293239324, guid: b3513de3569b747419714462d7d518c7,
     type: 2}
   m_PrefabInternal: {fileID: 18208240}
+--- !u!1 &1647455814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1647455817}
+  - component: {fileID: 1647455816}
+  - component: {fileID: 1647455815}
+  m_Layer: 0
+  m_Name: Save Sheep from glitching through
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1647455815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1647455814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b198a802de6b8e4484372fe21e99a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upAmount: 11
+--- !u!65 &1647455816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1647455814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 110, y: 1, z: 110}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1647455817
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1647455814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 33.2, y: 33, z: 1077.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672536903
 GameObject:
   m_ObjectHideFlags: 0
