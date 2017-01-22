@@ -67,6 +67,7 @@ public class CameraFollow : MonoBehaviour
             //transform.position = needPos;
 
             float joyX = Input.GetAxis("RightH");
+            
             //float joyx = Input.GetAxis("Joy x");
 
             //TODO: have camera orbit around needed position, use needPos
