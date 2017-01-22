@@ -22,7 +22,9 @@ public class Startup : MonoBehaviour {
     {
         stats.setCanvas(GameObject.Find("Canvas"));
         stats.setWinScreen(GameObject.Find("Canvas/WinScreen"));
+        stats.setLoseScreen(GameObject.Find("Canvas/LoseScreen"));
 
         stats.getWinScreen().SetActive(false);
+        stats.getLoseScreen().SetActive(false);
     }
 }
