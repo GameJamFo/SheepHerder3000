@@ -62,18 +62,19 @@ public class CameraFollow : MonoBehaviour
 
         
         // if middle mouse down.. rotate around and watch at point
-        if (Input.GetMouseButton(2)==true && rotationEnabled)
+        if (Input.GetAxisRaw("RightH") > 0.05f || Input.GetAxisRaw("RightH") < -0.05f && rotationEnabled)
         {
             //transform.position = needPos;
 
-            float mouseX = Input.GetAxis("Mouse X");
+            float joyX = Input.GetAxis("RightH");
+            //float joyx = Input.GetAxis("Joy x");
 
             //TODO: have camera orbit around needed position, use needPos
             // Keep us at orbitDistance from target
 
             needPos.transform.position = midPoint.transform.position + (needPos.transform.position - midPoint.transform.position).normalized * distance;
-            needPos.transform.RotateAround(midPoint.transform.position + new Vector3(0, currentHeight, 0), Vector3.up, mouseX * yRotationSpeed * Time.deltaTime);
-            
+            needPos.transform.RotateAround(midPoint.transform.position + new Vector3(0, currentHeight, 0), Vector3.up, joyX * yRotationSpeed * Time.deltaTime);
+           
             offset = needPos.transform.position - midPoint.transform.position;
             currentWidth = needPos.transform.position.x - midPoint.transform.position.x;
             currentHeight = needPos.transform.position.y - midPoint.transform.position.y;
