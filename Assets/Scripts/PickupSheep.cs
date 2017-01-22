@@ -20,6 +20,7 @@ public class PickupSheep : MonoBehaviour {
             // position
             sheepPickedUp.transform.position = sheepDropOfLocation.position;
             sheepPickedUp.transform.eulerAngles = new Vector3(0, sheepDropOfLocation.eulerAngles.y, 0);
+            sheepPickedUp.GetComponent<BoidFlocking3D>().StartCoroutine("BoidSteering");
             fakeSheep.SetActive(false);
 
             leftArm.transform.localEulerAngles = Vector3.zero;
