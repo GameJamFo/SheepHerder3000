@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class CountDownClock : MonoBehaviour {
 
-    public Text clockText;
+    private Text clockText;
     public float timeToComplete = 120f;
     private bool started = false;
+    private State state;
 	
     void Start()
     {
+        state = GameObject.Find("GameController").GetComponent<State>();
+        clockText = gameObject.GetComponent<Text>();
         drawText();
         clockText.color = Color.black;
         StartTimer();
@@ -20,13 +23,16 @@ public class CountDownClock : MonoBehaviour {
 	void Update () {
 		if(started == true)
         {
-            timeToComplete -= Time.deltaTime;
-            drawText();
+            if (timeToComplete > 0)
+            {
+                timeToComplete -= Time.deltaTime;
+                drawText();
 
-            if (timeToComplete < 21 && clockText.color == Color.black)
-                clockText.color = Color.red;
+                if (timeToComplete < 21 && clockText.color == Color.black)
+                    clockText.color = Color.red;
 
-            if (timeToComplete < 0)
+            }
+            else if (state.getState() == State.gameState.playing)
                 timeOut();
         }
 	}
@@ -69,5 +75,6 @@ public class CountDownClock : MonoBehaviour {
     {
         // You lose!
         // Return to menu screen...
+        state.loseGame();
     }
 }

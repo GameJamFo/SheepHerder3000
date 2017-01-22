@@ -29,8 +29,6 @@ public class endZone : MonoBehaviour {
         if (other.gameObject.tag == "sheep" && !sheepInsideZone.Contains(other.gameObject))
         {
             sheepInsideZone.Add(other.gameObject);
-            Debug.Log("Sheep entered!");
-            Debug.Log(allSheepInZone());
         }
     }
     private void OnTriggerExit(Collider other)
@@ -38,7 +36,6 @@ public class endZone : MonoBehaviour {
         if (other.gameObject.tag == "sheep" && sheepInsideZone.Contains(other.gameObject))
         {
             sheepInsideZone.Remove(other.gameObject);
-            Debug.Log("Sheep left!");
         }
     }
 }
