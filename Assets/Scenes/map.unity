@@ -1830,7 +1830,29 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1409007079}
-    m_RemovedComponents: []
+    - target: {fileID: 4713085011680232, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713085011680232, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713085011680232, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114627959998495732, guid: aa511abef1601dd4db0483a411b33b07,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1409007079}
+    - target: {fileID: 1915108783840728, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114175506654816312, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &663494593
@@ -2065,11 +2087,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3513de3569b747419714462d7d518c7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &743572821 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1523720794439190, guid: aa511abef1601dd4db0483a411b33b07,
-    type: 2}
-  m_PrefabInternal: {fileID: 606021191}
 --- !u!1001 &769562080
 Prefab:
   m_ObjectHideFlags: 0
@@ -3144,6 +3161,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3513de3569b747419714462d7d518c7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1068639748 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1357676287891222, guid: aa511abef1601dd4db0483a411b33b07,
+    type: 2}
+  m_PrefabInternal: {fileID: 606021191}
 --- !u!1001 &1073995716
 Prefab:
   m_ObjectHideFlags: 0
@@ -4113,7 +4135,7 @@ Transform:
   m_LocalScale: {x: 7.6032166, y: 4.223097, z: 4.223097}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 40, y: -2.3690002, z: 0.512}
 --- !u!114 &1409007081
 MonoBehaviour:
@@ -4133,7 +4155,7 @@ MonoBehaviour:
   rotationEnabled: 1
   yRotationSpeed: 300
   yRotationSmoothness: 5
-  midPoint: {fileID: 743572821}
+  midPoint: {fileID: 1068639748}
   zoomAmount: 10
   maxZoom: 100
   startZoomProsent: 100
