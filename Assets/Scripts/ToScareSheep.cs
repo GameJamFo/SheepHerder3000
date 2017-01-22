@@ -6,23 +6,17 @@ public class ToScareSheep : MonoBehaviour {
 
     private SphereCollider scareArea;
 
-	// Use this for initialization
 	void Start () {
         scareArea = gameObject.AddComponent<SphereCollider>();
-        scareArea.radius = 5f;
+        scareArea.radius = 10f;
         scareArea.isTrigger = true;
     }
-	
-	// Update is called once per frame
-	void Update () {	
-	}
 
     void OnTriggerStay(Collider other)
     {
-        if(/*other.gameObject.transform.parent == null &&*/ other.gameObject.transform.tag == "sheep")
+        if(other.gameObject.transform.tag == "sheep")
         {
             other.gameObject.GetComponent<BoidFlocking3D>().scareSheep(transform.position);
         }
     }
-
 }

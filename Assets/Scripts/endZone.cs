@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class endZone : MonoBehaviour {
 
-    private List<GameObject> allSheep = new List<GameObject>();
+    private Stats stats = null;
     private List<GameObject> sheepInsideZone = new List<GameObject>();
 
-    void Start ()
+    void Awake ()
     {
-        foreach(GameObject sheep in GameObject.FindGameObjectsWithTag("sheep"))
-        {
-            allSheep.Add(sheep);
-        }
+        stats = GameObject.Find("GameController").GetComponent<Stats>();
 	}
 
     private bool allSheepInZone()
     {
-        foreach (GameObject sheep in allSheep)
+        foreach (GameObject sheep in stats.getAllSheep())
         {
             if (!sheepInsideZone.Contains(sheep))
             {
