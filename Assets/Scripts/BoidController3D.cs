@@ -19,6 +19,13 @@ public class BoidController3D : MonoBehaviour
 
     private GameObject[] boids;
     new private Collider collider;
+    private Stats stats = null;
+
+    private void Awake()
+    {
+        stats = GameObject.Find("GameController").GetComponent<Stats>();
+        Debug.Log(stats);
+    }
 
     void Start()
     {
@@ -34,6 +41,7 @@ public class BoidController3D : MonoBehaviour
             boid.GetComponent<BoidFlocking3D>().nearbyCenterMultiple = nearbyCenterMultiple;
             boid.GetComponent<BoidFlocking3D>().nearbyVelocityMultiple = nearbyVelocityMultiple;
             boids[i] = boid;
+            stats.addSheep(boid);
 
             GameObject boidFollower = new GameObject("follower");
 
@@ -51,7 +59,7 @@ public class BoidController3D : MonoBehaviour
         Vector3 theCenter = Vector3.zero;
         Vector3 theVelocity = Vector3.zero;
 
-        foreach (GameObject boid in boids)
+        foreach (GameObject boid in stats.getAllSheep())
         {
             theCenter = theCenter + boid.transform.localPosition;
             theVelocity = theVelocity + boid.GetComponent<Rigidbody>().velocity;

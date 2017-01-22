@@ -112,11 +112,11 @@ public class BoidFlocking3D : MonoBehaviour
 
         randomize.Normalize();
         BoidController3D boidController = Controller.GetComponent<BoidController3D>();
-        Vector3 flockCenter = new Vector3(boidController.flockCenter.x, transform.localPosition.y, boidController.flockCenter.z);
+        //Vector3 flockCenter = new Vector3(boidController.flockCenter.x, transform.position.y, boidController.flockCenter.z);
         Vector3 flockVelocity = boidController.flockVelocity;
         Vector3 follow = chasee.transform.localPosition;
 
-        flockCenter = -gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyCenter() * nearbyCenterMultiple;
+        Vector3 flockCenter = -gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyCenter() * nearbyCenterMultiple;
         flockVelocity = gameObject.GetComponentInChildren<SheepBoidCloseby>().getNearbyVelocity() * nearbyVelocityMultiple;
         follow = follow - transform.localPosition;
         follow = Vector3.zero;
@@ -126,7 +126,6 @@ public class BoidFlocking3D : MonoBehaviour
 
     private Vector3 RunAwayCalc()
     {
-        print("Run Away!!");
         return fleeDirection + Vector3.up;
     }
 
