@@ -265,7 +265,7 @@ MonoBehaviour:
     height: 30
     width: 0
     depth: -10
-  rotationEnabled: 0
+  rotationEnabled: 1
   yRotationSpeed: 300
   yRotationSmoothness: 5
   midPoint: {fileID: 1943439253}
@@ -461,6 +461,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114252348914206118, guid: aa511abef1601dd4db0483a411b33b07,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 232617395}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa511abef1601dd4db0483a411b33b07, type: 2}
   m_IsPrefabParent: 0
