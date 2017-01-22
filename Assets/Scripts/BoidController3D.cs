@@ -24,7 +24,6 @@ public class BoidController3D : MonoBehaviour
     private void Awake()
     {
         stats = GameObject.Find("GameController").GetComponent<Stats>();
-        Debug.Log(stats);
     }
 
     void Start()
@@ -34,7 +33,6 @@ public class BoidController3D : MonoBehaviour
         for (var i = 0; i < flockSize; i++)
         {
             Vector3 random = new Vector3(Random.Range(-spawnArea, spawnArea), 0f, Random.Range(-spawnArea, spawnArea));
-            Debug.Log(random);
             GameObject boid = Instantiate(prefab, random, transform.rotation) as GameObject;
             boid.transform.position = transform.position + random;
             boid.GetComponent<BoidFlocking3D>().SetController(gameObject);

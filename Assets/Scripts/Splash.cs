@@ -14,12 +14,12 @@ public class Splash : MonoBehaviour {
         gameController.AddComponent<Stats>();
         gameController.AddComponent<State>();
 
-        DontDestroyOnLoad(gameController);
+        //DontDestroyOnLoad(gameController);
 	}
 	
 	IEnumerator splashTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(1);
     }
 }

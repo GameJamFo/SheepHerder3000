@@ -65,14 +65,6 @@ public class BoidFlocking3D : MonoBehaviour
         {
             //StartCoroutine(jump(1f));
         }
-
-        if(currentMood == mood.CALM)
-        {
-            Debug.Log("Sheep is CALM");
-        } else if(currentMood == mood.SCARED)
-        {
-            Debug.Log("Sheep is Scared");
-        }
     }
 
     public IEnumerator BoidSteering()
@@ -103,7 +95,6 @@ public class BoidFlocking3D : MonoBehaviour
                     GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * minVelocity;
                 }
             }
-            print("Sheep still awake...");
             yield return new WaitForSeconds(waitTime);
         }
     }
