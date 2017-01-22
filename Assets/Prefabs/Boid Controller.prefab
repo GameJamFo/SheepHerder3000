@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4515378759257246}
   - component: {fileID: 114141341436298544}
-  - component: {fileID: 65270204495695784}
   m_Layer: 0
   m_Name: Boid Controller
   m_TagString: Untagged
@@ -35,24 +34,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187923013716828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 3, z: 10}
+  m_LocalPosition: {x: 24.97, y: 3, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65270204495695784
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1187923013716828}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 15, y: 3, z: 30}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114141341436298544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,8 +54,11 @@ MonoBehaviour:
   minVelocity: 5
   maxVelocity: 20
   randomness: 1
+  nearbyCenterMultiple: 1
+  nearbyVelocityMultiple: 1
   flockSize: 20
   prefab: {fileID: 1368327441726206, guid: 95963b7accd79754fac435180a663ad5, type: 2}
   chasee: {fileID: 1777493536937778, guid: f5b78dd5fb5d7044786c4067cccfd47d, type: 2}
   flockCenter: {x: 0, y: 0, z: 0}
   flockVelocity: {x: 0, y: 0, z: 0}
+  spawnArea: 5
