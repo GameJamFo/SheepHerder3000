@@ -35,4 +35,9 @@ public class MenuScript : MonoBehaviour {
         creditsFrame.SetActive(true);
         creditsShowing = true;
     }
+
+    public void endGame()
+    {
+        Application.Quit();
+    }
 }
