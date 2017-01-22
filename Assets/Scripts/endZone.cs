@@ -6,9 +6,11 @@ public class endZone : MonoBehaviour {
 
     private Stats stats = null;
     private List<GameObject> sheepInsideZone = new List<GameObject>();
+    private State state;
 
     void Awake ()
     {
+        state = GameObject.Find("GameController").GetComponent<State>();
         stats = GameObject.Find("GameController").GetComponent<Stats>();
 	}
 
@@ -29,8 +31,11 @@ public class endZone : MonoBehaviour {
         if (other.gameObject.tag == "sheep" && !sheepInsideZone.Contains(other.gameObject))
         {
             sheepInsideZone.Add(other.gameObject);
-            Debug.Log("Sheep entered!");
-            Debug.Log(allSheepInZone());
+
+            if (allSheepInZone())
+            {
+                state.switchState(State.gameState.won);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -38,7 +43,6 @@ public class endZone : MonoBehaviour {
         if (other.gameObject.tag == "sheep" && sheepInsideZone.Contains(other.gameObject))
         {
             sheepInsideZone.Remove(other.gameObject);
-            Debug.Log("Sheep left!");
         }
     }
 }
