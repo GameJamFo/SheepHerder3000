@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
     public Camera mainCamera;
-    public float speed = 6f;
+    public float speed = 12f;
     private bool jumping = false;
 
 	void Update ()

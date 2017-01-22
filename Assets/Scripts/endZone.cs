@@ -32,7 +32,7 @@ public class endZone : MonoBehaviour {
         {
             sheepInsideZone.Add(other.gameObject);
 
-            if (allSheepInZone())
+            if (allSheepInZone() && state.getState() == State.gameState.playing)
             {
                 state.switchState(State.gameState.won);
             }
